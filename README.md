@@ -5,11 +5,11 @@ A cross-platform mobile application built with Flutter for iOS and Android that 
 ## 📱 Screen Shots
 
 <p align="center">
-  <img src="assets/project_images/1.jpg" width="19%" />
-  <img src="assets/project_images/2.jpg" width="19%" />
-  <img src="assets/project_images/3.jpg" width="19%" />
-  <img src="assets/project_images/4.jpg" width="19%" />
-  <img src="assets/project_images/5.jpg" width="19%" />
+  <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/1.jpg" width="19%" />
+  <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/2.jpg" width="19%" />
+  <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/3.jpg" width="19%" />
+  <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/4.jpg" width="19%" />
+  <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/5.jpg" width="19%" />
 </p>
 
 ## 📱 Features
