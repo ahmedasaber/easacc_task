@@ -12,6 +12,10 @@ A cross-platform mobile application built with Flutter for iOS and Android that 
   <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/5.jpg" width="19%" />
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ahmedasaber/easacc_task/refs/heads/master/assets/project-images/6.jpg" width="19%" />
+</p>
+
 ## 📱 Features
 
 ### 1. Social Media Login
