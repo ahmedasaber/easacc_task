@@ -1,3 +1,5 @@
+import 'package:easacc_task/core/helper_fun/error_snack_bar.dart';
+import 'package:easacc_task/core/services/shared_preferences_singleton.dart';
 import 'package:easacc_task/features/settings/presentation/views/webview_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +16,7 @@ class URLTextField extends StatefulWidget {
 }
 
 class _URLTextFieldState extends State<URLTextField> {
+  final _formKey = GlobalKey<FormState>();
   final scrollController = ScrollController();
   bool readOnly = true;
 
@@ -26,32 +29,54 @@ class _URLTextFieldState extends State<URLTextField> {
   }
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onTap: (){
-        if(readOnly && widget.controller.text.isNotEmpty) Navigator.pushNamed(context, WebviewScreen.routeName, arguments: widget.controller.text.trim());
-      },
-      style: readOnly? TextStyle(color: Colors.grey.shade500): null,
-      controller: widget.controller,
-      scrollController: scrollController,
-      onSaved: widget.onSaved,
-      readOnly: readOnly,
-      keyboardType: TextInputType.url,
-      cursorColor: Colors.black,
-      decoration: InputDecoration(
-        hintText: 'Enter The URL...',
-        hintStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
-        suffixIcon: InkWell(onTap:(){
-          setState(() {
-            readOnly = !readOnly;
-            widget.controller.selection = TextSelection.collapsed(offset: 0);
-            scrollController.jumpTo(0);
-          });
-        },child: Icon(Icons.edit, color: readOnly? Colors.grey.shade500 : null,)),
-        filled: true,
-        fillColor: Color(0xffF9FAFA),
-        border: buildBorder(),
-        enabledBorder:  buildBorder(),
-        focusedBorder:  buildBorder(),
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            onTap: (){
+              if (_formKey.currentState!.validate()) {
+                showErrorBar(context, "VALID URL: ${widget.controller.text}");
+                if(readOnly && widget.controller.text.isNotEmpty) Navigator.pushNamed(context, WebviewScreen.routeName, arguments: widget.controller.text.trim());
+              }
+            },
+            style: readOnly? TextStyle(color: Colors.grey.shade500): null,
+            controller: widget.controller,
+            scrollController: scrollController,
+            onSaved: widget.onSaved,
+            readOnly: readOnly,
+            keyboardType: TextInputType.url,
+            cursorColor: Colors.black,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'URL is required';
+              }
+              if (!isValidUrl(value)) {
+                return 'Enter a valid URL (must start with http/https)';
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              hintText: 'Enter The URL...',
+              hintStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
+              suffixIcon: InkWell(onTap:(){
+                setState(() {
+                  readOnly = !readOnly;
+                  if(readOnly){
+                    AppPrefs.setString('url', widget.controller.text.trim());
+                  }
+                  widget.controller.selection = TextSelection.collapsed(offset: 0);
+                  scrollController.jumpTo(0);
+                });
+              },child: Icon(Icons.edit, color: readOnly? Colors.grey.shade500 : null,)),
+              filled: true,
+              fillColor: Color(0xffF9FAFA),
+              border: buildBorder(),
+              enabledBorder:  buildBorder(),
+              focusedBorder:  buildBorder(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -65,4 +90,11 @@ OutlineInputBorder buildBorder(){
         width: 1
     ),
   );
+}
+
+bool isValidUrl(String url) {
+  final uri = Uri.tryParse(url);
+  return uri != null &&
+      (uri.isScheme("http") || uri.isScheme("https")) &&
+      uri.host.isNotEmpty;
 }

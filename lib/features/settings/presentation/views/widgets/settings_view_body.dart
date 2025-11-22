@@ -1,5 +1,4 @@
-import 'package:drop_down_list/drop_down_list.dart';
-import 'package:drop_down_list/model/selected_list_item.dart';
+import 'package:easacc_task/core/services/shared_preferences_singleton.dart';
 import 'package:easacc_task/features/settings/presentation/views/widgets/scan_button.dart';
 import 'package:easacc_task/features/settings/presentation/views/widgets/url_text_field.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ class _SettingViewBodyState extends State<SettingViewBody> {
   late TextEditingController controller;
   @override
   void initState() {
-    controller = TextEditingController();
+    controller = TextEditingController(text: AppPrefs.getString('url'));
     super.initState();
   }
   @override
