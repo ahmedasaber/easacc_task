@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBU5hLY-7S2TakEKwgNZdyeZPFJ10eZ7ds',
-    appId: '1:951859688456:android:3cd7337e4195f1d1700dbd',
-    messagingSenderId: '951859688456',
+    apiKey: 'apiKey',
+    appId: 'appId',
+    messagingSenderId: 'messagingSenderId',
     projectId: 'easacc-976dd',
     storageBucket: 'easacc-976dd.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAMfyI3m_ng0D-o_iR6b85ExegFU3weJw0',
-    appId: '1:951859688456:ios:e4cac2c49848042c700dbd',
-    messagingSenderId: '951859688456',
-    projectId: 'easacc-976dd',
+    apiKey: 'apiKey',
+    appId: 'appId',
+    messagingSenderId: 'messagingSenderId',
+    projectId: 'projectId',
     storageBucket: 'easacc-976dd.firebasestorage.app',
-    iosClientId: '951859688456-egq2cug38fnl5enosraof07be52o3bd5.apps.googleusercontent.com',
+    iosClientId: 'iosClientId',
     iosBundleId: 'com.example.easaccTask',
   );
 }
