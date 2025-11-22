@@ -137,3 +137,10 @@ The app uses **flutter_bloc** with the Cubit pattern:
 
 - `SignInCubit` - Handles authentication states
 - `ScanDevicesCubit` - Manages Bluetooth device scanning
+
+## 📞 Support
+
+For support, email: ahmeda.saber22@gmail.com.
+---
+
+Made with ❤️ by Ahmed Ashraf
